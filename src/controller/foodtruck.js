@@ -43,6 +43,19 @@ export default({config,db}) =>{
     });
   });
 
+  //retrieve all Food Trucks which serve a certain foodtype
+  //'v1/foodtruck/foodtype/:foodtype’
+  api.get('/foodtype/:foodtype', (req,res)=>{
+    FoodTruck.find({ foodtype: req.params.foodtype },(err,foodtrucks) => {
+      if(err){
+        res.send(err);
+      }
+      res.json(foodtrucks);
+    });
+  });
+
+
+
   // '/v1/foodtruck/:id' - Update
   api.put('/:id',(req,res)=>{
     FoodTruck.findById(req.params.id,(err,foodtruck)=>{
