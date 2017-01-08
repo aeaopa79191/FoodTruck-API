@@ -8,7 +8,7 @@
     "build": "babel src -s -D -d dist --presets es2015,stage-0",
     "start": "NODE_ENV=production pm2 start dist",
     "prestart": "npm run -s build",
-    "lint":  "eslint src",
+    "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "eslintConfig": {
@@ -16,20 +16,25 @@
       "ecmaVersion": 7,
       "sourceType": "module"
     },
-     "env":{
-       "node":true
-     },
-     "rules":{
-       "no-console":0,
-       "no-unused-vars": 1
-     }
+    "env": {
+      "node": true
+    },
+    "rules": {
+      "no-console": 0,
+      "no-unused-vars": 1
+    }
   },
   "author": "Ken Chiu <kenchiu100@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "mongoose": "^4.7.6"
+    "express-jwt": "^5.1.0",
+    "jsonwebtoken": "^7.2.1",
+    "mongoose": "^4.7.6",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
