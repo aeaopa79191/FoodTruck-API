@@ -25,7 +25,7 @@ export default({config,db}) =>{
 
   // '/v1/foodtruck' - Read
 
-  api.get('/', authenticate, (req,res) =>{
+  api.get('/', (req,res) =>{
     FoodTruck.find({},(err,foodtrucks) =>{
       if(err){
         res.send(err);
@@ -58,7 +58,7 @@ export default({config,db}) =>{
 
 
   // '/v1/foodtruck/:id' - Update
-  api.put('/:id',(req,res)=>{
+  api.put('/:id',authenticate, (req,res)=>{
     FoodTruck.findById(req.params.id,(err,foodtruck)=>{
       if(err){
         res.send(err);
@@ -74,7 +74,7 @@ export default({config,db}) =>{
   });
 
 // '/v1/foodtruck/:id' - Delete
-api.delete('/:id',(req,res) =>{
+api.delete('/:id',authenticate,(req,res) =>{
   FoodTruck.remove({
     _id: req.params.id
   },(err, foodtruck)=>{
@@ -87,7 +87,7 @@ api.delete('/:id',(req,res) =>{
 
 // add review for a specific foodtruckid
 // '/v1/foodtruck/reviews/add/:id'
-api.post('/reviews/add/:id', (req, res) => {
+api.post('/reviews/add/:id', authenticate,(req, res) => {
   FoodTruck.findById(req.params.id, (err, foodtruck) => {
     if (err) {
       res.send(err);
