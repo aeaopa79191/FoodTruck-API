@@ -8,7 +8,7 @@ export default({config,db}) =>{
   let api = Router();
 
   // '/v1/routes/add' - Create
-  api.post('/add',authenticate, (req,res) =>{
+  api.post('/add', (req,res) =>{
     let newFoodTruck = new FoodTruck();
     newFoodTruck.name = req.body.name;
     newFoodTruck.foodtype = req.body.foodtype;
